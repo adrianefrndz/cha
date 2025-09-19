@@ -260,6 +260,67 @@ body {
     100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
+/* 3D Gift Box */
+.gift-3d-container {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.gift-3d {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    perspective: 400px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    transition: transform 0.4s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.gift-3d-lid {
+    width: 80px;
+    height: 24px;
+    background: #ff69b4;
+    border-radius: 10px 10px 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(255,105,180,0.10);
+    transition: transform 0.6s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.gift-3d-box {
+    width: 80px;
+    height: 56px;
+    background: repeating-linear-gradient(135deg, #fff0f6 0 12px, #ffb6c1 12px 24px);
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    top: 24px;
+    left: 0;
+    box-shadow: 0 4px 16px rgba(255,105,180,0.10);
+    border: 2px solid #ff69b4;
+}
+.gift-3d.unboxed .gift-3d-lid {
+    transform: translateY(-40px) rotateX(60deg);
+}
+.gift-3d.unboxed {
+    transform: scale(1.1);
+}
+.gift-surprise {
+    text-align: center;
+    animation: fadeInUp 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.gift-surprise-text {
+    margin-top: 8px;
+    font-size: 1.2rem;
+    color: #e75480;
+    font-family: 'Indie Flower', 'Segoe UI', sans-serif;
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
 @font-face {
     font-family: 'ShinyCrystal';
     src: url('./fonts/ShinyCrystal.ttf') format('truetype');

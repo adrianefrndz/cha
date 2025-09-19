@@ -26,13 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, candles.length * 220 + 400);
     });
 
-    // Greeting display
-    function showGreeting() {
-        const el = document.querySelector('.typed-text');
-        const text = el.dataset.text;
-        el.textContent = text;
-    }
-
     // Confetti animation (simple canvas)
     function launchConfetti() {
         const ctx = confettiCanvas.getContext('2d');
@@ -64,15 +57,29 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Balloon float animation
-    function launchBalloons() {
-        if (balloonsLaunched) return;
-        balloonsLaunched = true;
-        for (let i = 0; i < 6; i++) {
-            const balloon = document.createElement('div');
-            balloon.className = 'balloon';
-            balloon.style.left = `${10 + i*15}%`;
-            balloon.style.background = `hsl(${Math.random()*360},80%,80%)`;
-            balloonContainer.appendChild(balloon);
-        }
+    // function launchBalloons() {
+    //     if (balloonsLaunched) return;
+    //     balloonsLaunched = true;
+    //     for (let i = 0; i < 6; i++) {
+    //         const balloon = document.createElement('div');
+    //         balloon.className = 'balloon';
+    //         balloon.style.left = `${10 + i*15}%`;
+    //         balloon.style.background = `hsl(${Math.random()*360},80%,80%)`;
+    //         balloonContainer.appendChild(balloon);
+    //     }
+    // }
+
+    // 3D Gift box unboxing
+    const gift3d = document.getElementById('gift3d');
+    const giftSurprise = document.getElementById('giftSurprise');
+    const giftInstruction = document.querySelector('.gift-3d-instruction');
+    if (gift3d) {
+        gift3d.addEventListener('click', function () {
+            gift3d.classList.add('unboxed');
+            if (giftInstruction) giftInstruction.style.display = 'none';
+            setTimeout(() => {
+                giftSurprise.style.display = 'block';
+            }, 600);
+        });
     }
 });
